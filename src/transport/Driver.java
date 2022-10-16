@@ -3,7 +3,7 @@ package transport;
 public class Driver <A extends Transport> {
 
     private String name;
-    private boolean license;
+    private String license;
     private double experience;
 
     public Driver(String name) {
@@ -39,11 +39,11 @@ public class Driver <A extends Transport> {
                 car.getBrand() + " " + car.getModel() + ", и будет участвовать в заезде!");
     }
 
-    public boolean isLicense() {
+    public String isLicense() {
         return license;
     }
 
-    public void setLicense(boolean license) {
+    public void setLicense(String license) {
         this.license = license;
     }
 

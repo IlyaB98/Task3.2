@@ -2,8 +2,32 @@ package transport;
 
 public class PassengerCar extends Transport implements Competing{
 
+public enum BodyType {СЕДАН, ХЕТЧБЕК, КУПЕ, УНИВЕРСАЛ, ВНЕДОРОЖНИК, КРОССОВЕР, ПИКАП, ФУРГОН, МИНИВЭН}
+
+    private BodyType bodyType;
+
     public PassengerCar(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
+    }
+
+    public void typeCar() {
+        for(BodyType c : BodyType.values()){
+            if (getBodyType() == null) {
+                System.out.println("Данных по авто недостаточно!");
+                break;
+            }else if (getBodyType().name().equals(c.name())) {
+                System.out.println(getBrand() + " " + getModel() + ", это - " + c.name().toLowerCase());
+                break;
+            }
+        }
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override

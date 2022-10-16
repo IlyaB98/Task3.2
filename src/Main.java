@@ -22,15 +22,26 @@ public class Main {
         System.out.println(truck3);
 
         System.out.println();
-        Bus bus1 = new Bus("Автобус-1", "B1", 2020);
+        Bus bus1 = new Bus("Автобус-1", "B1", 3.0);
         System.out.println(bus1);
-        Bus bus2 = new Bus("Автобус-2", "B2", 2021);
+        Bus bus2 = new Bus("Автобус-2", "B2", 3.0);
         System.out.println(bus2);
-        Bus bus3 = new Bus("Автобус-3", "B3", 2016);
+        Bus bus3 = new Bus("Автобус-3", "B3", 3.5);
         System.out.println(bus3);
 
         System.out.println();
         Driver<PassengerCar> vladimir = new Driver<>("Владимир");
         vladimir.go(audi);
+
+        System.out.println();
+        audi.setBodyType(PassengerCar.BodyType.ФУРГОН);
+        audi.typeCar();
+        System.out.println();
+        truck1.setBodyType(Truck.BodyType.N3);
+        truck1.typeCar();
+        System.out.println();
+        bus1.setBodyType(Bus.BodyType.СРЕДНЯЯ);
+        bus1.typeCar();
+
     }
 }
