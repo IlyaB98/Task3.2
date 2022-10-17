@@ -1,6 +1,6 @@
 package transport;
 
-public class Driver <A extends Transport> {
+public  abstract class Driver <A extends Transport & Competing> {
 
     private String name;
     private String license;

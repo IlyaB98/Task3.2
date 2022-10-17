@@ -1,7 +1,4 @@
-import transport.Bus;
-import transport.Driver;
-import transport.PassengerCar;
-import transport.Truck;
+import transport.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +27,7 @@ public class Main {
         System.out.println(bus3);
 
         System.out.println();
-        Driver<PassengerCar> vladimir = new Driver<>("Владимир");
+        DriverCategoryB vladimir = new DriverCategoryB("Владимир");
         vladimir.go(audi);
 
         System.out.println();

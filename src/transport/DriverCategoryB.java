@@ -1,6 +1,6 @@
 package transport;
 
-public class DriverCategoryB extends Driver{
+public class DriverCategoryB extends Driver<PassengerCar>{
 
     public DriverCategoryB(String name) {
         super(name);
