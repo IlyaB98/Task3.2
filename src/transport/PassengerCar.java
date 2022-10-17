@@ -10,6 +10,16 @@ public enum BodyType {СЕДАН, ХЕТЧБЕК, КУПЕ, УНИВЕРСАЛ, 
         super(brand, model, engineVolume);
     }
 
+    @Override
+    public boolean passDiagnostics() throws CantDiagnosticException{
+        double numb = Math.random();
+        if (numb > 0.5) {
+            System.out.println("Машина " + getBrand() + " " + getModel() + " диагностику прошла!");
+            return true;
+        }
+        throw new CantDiagnosticException("Машина " + getBrand() + " " + getModel() + " диагностику не прошла!");
+    }
+
     public void typeCar() {
         for(BodyType c : BodyType.values()){
             if (getBodyType() == null) {

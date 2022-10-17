@@ -11,6 +11,7 @@ public abstract class Transport {
         setEngineVolume(engineVolume);
     }
 
+    public abstract boolean passDiagnostics() throws CantDiagnosticException;
     public abstract void start();
     public abstract void stop();
     public void setBrand(String brand) {

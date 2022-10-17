@@ -6,8 +6,10 @@ public  abstract class Driver <A extends Transport & Competing> {
     private String license;
     private double experience;
 
-    public Driver(String name) {
+    public Driver(String name, String license, double experience) {
         setName(name);
+        setLicense(license);
+        setExperience(experience);
     }
 
     public void start() {
@@ -44,7 +46,11 @@ public  abstract class Driver <A extends Transport & Competing> {
     }
 
     public void setLicense(String license) {
-        this.license = license;
+        if (license == null || license.isBlank() || license.isEmpty()) {
+            throw new IllegalArgumentException("Неверно указана категория прав!");
+        } else {
+            this.license = license;
+        }
     }
 
     public double getExperience() {

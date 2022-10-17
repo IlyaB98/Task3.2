@@ -28,6 +28,11 @@ public class Bus extends Transport implements Competing{
         super(brand, model, engineVolume);
     }
 
+    @Override
+    public boolean passDiagnostics() {
+        return false;
+    }
+
     public void typeCar() {
         for(BodyType c : BodyType.values()){
             if (getBodyType() == null) {
