@@ -1,15 +1,17 @@
 package transport;
 
-public  abstract class Driver <A extends Transport & Competing> {
+public abstract class Driver<A extends Transport & Competing> {
 
     private String name;
     private String license;
     private double experience;
+    private A transport;
 
-    public Driver(String name, String license, double experience) {
+    public Driver(String name, String license, double experience, A transport) {
         setName(name);
         setLicense(license);
         setExperience(experience);
+        this.transport = transport;
     }
 
     public void start() {
@@ -24,6 +26,18 @@ public  abstract class Driver <A extends Transport & Competing> {
         System.out.println("Заправляюсь!");
     }
 
+    public String getLicense() {
+        return license;
+    }
+
+    public A getTransport() {
+        return transport;
+    }
+
+    public void setTransport(A transport) {
+        this.transport = transport;
+    }
+
     public String getName() {
         return name;
     }
@@ -36,9 +50,9 @@ public  abstract class Driver <A extends Transport & Competing> {
         }
     }
 
-    public void go(A car) {
+    public void go() {
         System.out.println("Водитель " + getName() + " управляет автомобилем " +
-                car.getBrand() + " " + car.getModel() + ", и будет участвовать в заезде!");
+                transport.getBrand() + " " + transport.getModel() + ", и будет участвовать в заезде!");
     }
 
     public String isLicense() {

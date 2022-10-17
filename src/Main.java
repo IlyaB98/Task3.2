@@ -28,8 +28,8 @@ public class Main {
 //        System.out.println(bus3);
 //
 //        System.out.println();
-        DriverCategoryB vladimir = new DriverCategoryB("Владимир", "B",4);
-        vladimir.go(audi);
+        DriverCategoryB vladimir = new DriverCategoryB("Владимир", "B",4, audi);
+        vladimir.go();
 //
 //        System.out.println();
 //        audi.setBodyType(PassengerCar.BodyType.ФУРГОН);
