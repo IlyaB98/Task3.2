@@ -4,7 +4,6 @@ public class Truck extends Transport implements Competing {
 
     private BodyType bodyType;
 
-
     public enum BodyType {
         N1("с полной массой до 3,5 тонн"),
         N2("с полной массой свыше 3,5 до 12 тонн"),
@@ -49,6 +48,7 @@ public class Truck extends Transport implements Competing {
             }
         }
     }
+
 
     public BodyType getBodyType() {
         return bodyType;

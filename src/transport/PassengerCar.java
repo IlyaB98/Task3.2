@@ -1,17 +1,20 @@
 package transport;
 
-public class PassengerCar extends Transport implements Competing{
+import java.util.ArrayList;
+import java.util.List;
 
-public enum BodyType {СЕДАН, ХЕТЧБЕК, КУПЕ, УНИВЕРСАЛ, ВНЕДОРОЖНИК, КРОССОВЕР, ПИКАП, ФУРГОН, МИНИВЭН}
+public class PassengerCar extends Transport implements Competing {
 
     private BodyType bodyType;
+
+    public enum BodyType {СЕДАН, ХЕТЧБЕК, КУПЕ, УНИВЕРСАЛ, ВНЕДОРОЖНИК, КРОССОВЕР, ПИКАП, ФУРГОН, МИНИВЭН}
 
     public PassengerCar(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
     @Override
-    public boolean passDiagnostics() throws CantDiagnosticException{
+    public boolean passDiagnostics() throws CantDiagnosticException {
         double numb = Math.random();
         if (numb > 0.5) {
             System.out.println("Машина " + getBrand() + " " + getModel() + " диагностику прошла!");
@@ -21,11 +24,11 @@ public enum BodyType {СЕДАН, ХЕТЧБЕК, КУПЕ, УНИВЕРСАЛ, 
     }
 
     public void typeCar() {
-        for(BodyType c : BodyType.values()){
+        for (BodyType c : BodyType.values()) {
             if (getBodyType() == null) {
                 System.out.println("Данных по авто недостаточно!");
                 break;
-            }else if (getBodyType().name().equals(c.name())) {
+            } else if (getBodyType().name().equals(c.name())) {
                 System.out.println(getBrand() + " " + getModel() + ", это - " + c.name().toLowerCase());
                 break;
             }

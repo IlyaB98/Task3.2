@@ -78,4 +78,10 @@ public abstract class Driver<A extends Transport & Competing> {
             this.experience = experience;
         }
     }
+
+    @Override
+    public String toString() {
+        return  name;
+
+    }
 }
