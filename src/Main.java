@@ -1,5 +1,5 @@
+import hashmap.Directory;
 import product.Product;
-import set.Passport;
 import transport.*;
 import exception.*;
 
@@ -99,14 +99,85 @@ public class Main {
 //        Example example = new Example();
 //        example.generateTask();
 
-        Passport passport1 = new Passport("245363","Артем", "Громов");
-        passport1.addSetPassport();
-        Passport.findPassport("245363");
+//        Passport passport1 = new Passport("245363","Артем", "Громов");
+//        passport1.addSetPassport();
+//        Passport.findPassport("245363");
 
+//        Directory directory = new Directory();
+//        directory.addDirectory("Человек1", "+7924584682");
+//        directory.addDirectory("Человек2", "+79245684682");
+//        directory.addDirectory("Человек3", "+79245654682");
+//        directory.addDirectory("Человек4", "+792354682");
+//        directory.addDirectory("Человек5", "+76588566682");
+//        directory.addDirectory("Человек6", "+7346457682");
+//        directory.addDirectory("Человек7", "+7947667564682");
+//        directory.addDirectory("Человек8","+793463463454682");
+//        directory.addDirectory("Человек9", "+79245764744682");
+//        directory.addDirectory("Человек10", "+79345645682");
+//        directory.addDirectory("Человек11", "+79265865682");
+//        directory.addDirectory("Человек12", "+7922545645");
+//        directory.addDirectory("Человек13", "+7926375477");
+//        directory.addDirectory("Человек14", "+7924356682");
+//        directory.addDirectory("Человек15", "+776984682");
+//        directory.addDirectory("Человек16", "+7976954682");
+//        directory.addDirectory("Человек17", "+796485796682");
+//        directory.addDirectory("Человек18", "+775969860682");
+//        directory.addDirectory("Человек19", "+75875696904682");
+//        directory.addDirectory("Человек20", "+754756884682");
+//
+//        directory.printAllDirectory();
+
+
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(10);
+        list1.add(20);
+        list1.add(30);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(50);
+        list2.add(3450);
+        list2.add(30);
+        List<Integer> list3 = new ArrayList<>();
+        list3.add(540);
+        list3.add(450);
+        list3.add(60);
+        Map<String, List<Integer>> map = new HashMap<>();
+        map.put("Ключ1", list1);
+        map.put("Ключ2", list2);
+        map.put("Ключ3", list3);
+        System.out.println(map.keySet());
+        System.out.println(map.values());
+
+        Map<String, Integer> map2 = new HashMap<>();
+        map2.put("Ключ1", sumNumberList(list1));
+        map2.put("Ключ2", sumNumberList(list2));
+        map2.put("Ключ3", sumNumberList(list3));
+        System.out.println(map2.keySet());
+        System.out.println(map2.values());
+
+        Map<Integer, String> map3 = new LinkedHashMap<>();
+        map3.put(1, "Один");
+        map3.put(2, "Два");
+        map3.put(3, "Три");
+        map3.put(4, "Четыре");
+        map3.put(5, "Пять");
+        map3.put(6, "Шесть");
+        map3.put(7, "Семь");
+        map3.put(8, "Восемь");
+        map3.put(3455, "Девять");
+        map3.put(10, "Десять");
+        System.out.println(map3.keySet());
+        System.out.println(map3.values());
 
 
     }
 
+    public static int sumNumberList(List<Integer> list) {
+        int sum = 0;
+        for (int i = 0; i < list.size(); i++) {
+            sum += list.get(i);
+        }
+        return sum;
+    }
     public static void supermarket() {
 
         Queue<String> queue1 = new ArrayDeque<>(5);
