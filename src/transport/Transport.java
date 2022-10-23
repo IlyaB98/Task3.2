@@ -1,16 +1,16 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
 
-    private final List drivers = new ArrayList<Driver>();
-    private final List mechanics = new ArrayList<Mechanic>();
-    private final List sponsors = new ArrayList<Sponsor>();
+    private final Set<Driver> drivers = new HashSet<>();
+    private final Set<Mechanic> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
 
     public Transport(String brand, String model, double engineVolume) {
@@ -31,25 +31,37 @@ public abstract class Transport {
     public abstract void stop();
 
     public void addSponsor(Sponsor sponsor) {
-        sponsors.add(sponsor);
+        if (sponsors.contains(sponsor)) {
+            System.out.println("Спонсор " + sponsor.getName() + " уже был добавлен в лист спонсоров");
+        } else {
+            sponsors.add(sponsor);
+        }
     }
     public void addDriver(Driver driver) {
-        drivers.add(driver);
+        if (drivers.contains(driver)) {
+            System.out.println("Спонсор " + driver.getName() + " уже был добавлен в лист спонсоров");
+        } else {
+            drivers.add(driver);
+        }
     }
 
     public void addMechanic(Mechanic mechanic) {
-        mechanics.add(mechanic);
+        if (mechanics.contains(mechanic)) {
+            System.out.println("Спонсор " + mechanic.getName() + " уже был добавлен в лист спонсоров");
+        } else {
+            mechanics.add(mechanic);
+        }
     }
 
-    public List getDriver() {
+    public Set<Driver> getDriver() {
         return drivers;
     }
 
-    public List getMechanics() {
+    public Set<Mechanic> getMechanics() {
         return mechanics;
     }
 
-    public List getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 

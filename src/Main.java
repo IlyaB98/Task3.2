@@ -1,10 +1,9 @@
+import product.Product;
+import set.Passport;
 import transport.*;
 import exception.*;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws WrongLoginException, WrongPasswordException, CantDiagnosticException {
@@ -59,6 +58,7 @@ public class Main {
 //        Mechanic andrey = new Mechanic("Андрей", audi);
 //        audi.addDriver(vladimir);
 //        audi.addSponsor(redbull);
+//        audi.addSponsor(redbull);
 //        audi.addSponsor(avito);
 //        audi.addMechanic(andrey);
 //        audi.information();
@@ -68,7 +68,43 @@ public class Main {
 //        serviceStation.addTransport(truck1);
 //        serviceStation.technicalInspection();
 
-        chessBoard();
+//        chessBoard();
+
+        Product banana = new Product("Банан", 10, 1.0);
+        Product tangerine = new Product("Мандарин", 8.5, 0.5);
+        Product peach = new Product("Персик", 8.2, 1.5);
+        Product mango = new Product("Манго", 15.1, 1.0);
+
+//        ProductList productList = new ProductList();
+//        productList.addProduct(banana);
+//        productList.addProduct(tangerine);
+//        productList.addProduct(peach);
+//        productList.addProduct(mango);
+////        productList.addProduct(banana);
+//        productList.removeProduct(mango);
+
+
+//        Recipe fruitSalad = new Recipe("Фруктовый с йогуртом", banana, mango, peach);
+//        Recipe fruitSalad2 = new Recipe("Фруктовый", banana, mango, peach);
+//        Recipe fruitSalad3 = new Recipe("Фруктовый в сметане", banana, mango, peach, tangerine);
+////        System.out.println(fruitSalad);
+//
+//         fruitSalad.addRecipe();
+//         fruitSalad2.addRecipe();
+
+//        SetInteger integer = new SetInteger();
+//        integer.randomSetInteger();
+//        integer.removeOddNumber();
+
+//        Example example = new Example();
+//        example.generateTask();
+
+        Passport passport1 = new Passport("245363","Артем", "Громов");
+        passport1.addSetPassport();
+        Passport.findPassport("245363");
+
+
+
     }
 
     public static void supermarket() {
@@ -127,5 +163,6 @@ public class Main {
             System.out.println();
         }
     }
+
 }
 
