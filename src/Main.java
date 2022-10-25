@@ -1,5 +1,6 @@
 import hashmap.Directory;
 import product.Product;
+import product.Recipe;
 import transport.*;
 import exception.*;
 
@@ -84,13 +85,17 @@ public class Main {
 //        productList.removeProduct(mango);
 
 
-//        Recipe fruitSalad = new Recipe("Фруктовый с йогуртом", banana, mango, peach);
-//        Recipe fruitSalad2 = new Recipe("Фруктовый", banana, mango, peach);
-//        Recipe fruitSalad3 = new Recipe("Фруктовый в сметане", banana, mango, peach, tangerine);
-////        System.out.println(fruitSalad);
-//
-//         fruitSalad.addRecipe();
-//         fruitSalad2.addRecipe();
+        Recipe fruitSalad = new Recipe("Фруктовый с йогуртом", Recipe.addIngredients(banana, 3),
+                Recipe.addIngredients(mango, 2));
+        Recipe fruitSalad2 = new Recipe("Фруктовый", Recipe.addIngredients(banana, 4),
+                Recipe.addIngredients(mango, 2), Recipe.addIngredients(peach, 3));
+        Recipe fruitSalad3 = new Recipe("Фруктовый в сметане", Recipe.addIngredients(banana, 1),
+                Recipe.addIngredients(mango, 1));
+//        System.out.println(fruitSalad);
+
+//        fruitSalad.addRecipe();
+//        fruitSalad2.addRecipe();
+//        Recipe.priceDish(fruitSalad);
 
 //        SetInteger integer = new SetInteger();
 //        integer.randomSetInteger();
@@ -128,49 +133,66 @@ public class Main {
 //        directory.printAllDirectory();
 
 
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(10);
-        list1.add(20);
-        list1.add(30);
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(50);
-        list2.add(3450);
-        list2.add(30);
-        List<Integer> list3 = new ArrayList<>();
-        list3.add(540);
-        list3.add(450);
-        list3.add(60);
-        Map<String, List<Integer>> map = new HashMap<>();
-        map.put("Ключ1", list1);
-        map.put("Ключ2", list2);
-        map.put("Ключ3", list3);
-        System.out.println(map.keySet());
-        System.out.println(map.values());
+//        List<Integer> list1 = new ArrayList<>();
+//        list1.add(10);
+//        list1.add(20);
+//        list1.add(30);
+//        List<Integer> list2 = new ArrayList<>();
+//        list2.add(50);
+//        list2.add(3450);
+//        list2.add(30);
+//        List<Integer> list3 = new ArrayList<>();
+//        list3.add(540);
+//        list3.add(450);
+//        list3.add(60);
+//        Map<String, List<Integer>> map = new HashMap<>();
+//        map.put("Ключ1", list1);
+//        map.put("Ключ2", list2);
+//        map.put("Ключ3", list3);
+//        System.out.println(map.keySet());
+//        System.out.println(map.values());
+//
+//        Map<String, Integer> map2 = new HashMap<>();
+//        map2.put("Ключ1", sumNumberList(list1));
+//        map2.put("Ключ2", sumNumberList(list2));
+//        map2.put("Ключ3", sumNumberList(list3));
+//        System.out.println(map2.keySet());
+//        System.out.println(map2.values());
+//
+//        Map<Integer, String> map3 = new LinkedHashMap<>();
+//        map3.put(1, "Один");
+//        map3.put(2, "Два");
+//        map3.put(3, "Три");
+//        map3.put(4, "Четыре");
+//        map3.put(5, "Пять");
+//        map3.put(6, "Шесть");
+//        map3.put(7, "Семь");
+//        map3.put(8, "Восемь");
+//        map3.put(3455, "Девять");
+//        map3.put(10, "Десять");
+//        System.out.println(map3.keySet());
+//        System.out.println(map3.values());
 
-        Map<String, Integer> map2 = new HashMap<>();
-        map2.put("Ключ1", sumNumberList(list1));
-        map2.put("Ключ2", sumNumberList(list2));
-        map2.put("Ключ3", sumNumberList(list3));
-        System.out.println(map2.keySet());
-        System.out.println(map2.values());
-
-        Map<Integer, String> map3 = new LinkedHashMap<>();
-        map3.put(1, "Один");
-        map3.put(2, "Два");
-        map3.put(3, "Три");
-        map3.put(4, "Четыре");
-        map3.put(5, "Пять");
-        map3.put(6, "Шесть");
-        map3.put(7, "Семь");
-        map3.put(8, "Восемь");
-        map3.put(3455, "Девять");
-        map3.put(10, "Десять");
-        System.out.println(map3.keySet());
-        System.out.println(map3.values());
+        Map<String, Integer> task1_3 = new HashMap<>();
+        task1_3.put("str1", 2);
+        addMapTask1_3(task1_3, "str2", 1);
+//        addMapTask1_3(task1_3, "str1", 2);
+        addMapTask1_3(task1_3, "str1", 5);
 
 
     }
 
+    public static void addMapTask1_3(Map<String, Integer> map, String str, Integer numb) {
+        if (!map.containsKey(str)) {
+            map.put(str, numb);
+            System.out.println("Данные добавлены в коллекцию");
+        } else if (map.containsKey(str) && map.get(str).equals(numb)) {
+            throw new RuntimeException("Данный объект уже существует");
+        } else if (map.containsKey(str) && !map.get(str).equals(numb)) {
+            map.replace(str,map.get(str), numb);
+            System.out.println("Дынные обновлены");
+        }
+    }
     public static int sumNumberList(List<Integer> list) {
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
@@ -178,6 +200,7 @@ public class Main {
         }
         return sum;
     }
+
     public static void supermarket() {
 
         Queue<String> queue1 = new ArrayDeque<>(5);
@@ -190,6 +213,7 @@ public class Main {
             queue2.offer("Покупатель" + (i + 1));
         }
     }
+
     public static void addStringToQueue(String name, Queue<String> q1, Queue<String> q2) {
         if (q1.size() == q2.size() && q1.size() == 5) {
             System.out.println("Галя иди за кассу!");
@@ -201,6 +225,7 @@ public class Main {
             System.out.println(name + " встал в очередь на 2 кассу");
         }
     }
+
     public static void removeStringToQueue(Queue<String> q1, Queue<String> q2) {
         double numb = Math.random();
         if (numb >= 0.5) {

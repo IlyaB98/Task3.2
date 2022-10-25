@@ -1,20 +1,32 @@
 package product;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-public class Recipe{
+public class Recipe {
     private String name;
-
-    private Set<Product> products = new HashSet<>();
+    private Map<Product, Integer> products = new HashMap<>();
     private double cost;
     private Set<Recipe> recipes = new HashSet<>();
-    public Recipe(String name, Product... products) {
+
+    public Recipe(String name, Map<Product, Integer>... products) {
+//        Очень долго пробовал разными способами сделать так, чтобы в конструкторе можно было обработать неограниченное
+//        количество фруктов и добавить их в HashMap, но не один не сработал, пытался передать через конструктор одновременно
+//        Product... products и Integer... integers, не позволяла idea, отдельно один из параметров работает, а вот 2 сразу
+//        нет. Поэтому лучшего варианта чем создать отдельный метод и его вызывать при создании объекта не нашел.
+//        Можно ли эту проблему решить более красиво?
         this.name = name;
         for (int i = 0; i < products.length; i++) {
-            this.products.add(products[i]);
+            this.products.putAll(products[i]);
         }
+    }
+
+    public static Map<Product, Integer> addIngredients(Product product, Integer value) {
+        Map<Product, Integer> map = new HashMap<>();
+        if (value <= 0) {
+            value = 1;
+        }
+        map.put(product, value);
+        return map;
     }
 
     public void addRecipe() {
@@ -23,6 +35,14 @@ public class Recipe{
         }
         recipes.add(this);
         System.out.println("Рецепт салата " + this.getName().toLowerCase() + " добавлен в список");
+    }
+
+    public static void priceDish(Recipe recipe) {
+        double price = 0;
+        for (Product value: recipe.getProducts().keySet()) {
+                price += value.getPrice() * recipe.getProducts().get(value);
+        }
+        System.out.println("Салат " + recipe.getName().toLowerCase() + " стоит - " + price);
     }
 
     public String getName() {
@@ -41,7 +61,7 @@ public class Recipe{
         this.cost = cost;
     }
 
-    public Set<Product> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 
