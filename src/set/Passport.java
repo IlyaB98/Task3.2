@@ -1,10 +1,7 @@
 package set;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Passport {
 
@@ -14,7 +11,7 @@ public class Passport {
     private String lastName;
     private LocalDate birth;
 
-    private static Set<Passport> passports = new HashSet<>();
+    private static Map<String, Passport> passports = new HashMap<>();
 
     public Passport(String passportNumber, String name, String lastName) {
         this.passportNumber = passportNumber;
@@ -22,27 +19,23 @@ public class Passport {
         this.lastName = lastName;
     }
 
-    public void addSetPassport() {
-        if (passports.contains(this)) {
-            this.name = this.getName();
-            this.middleName = this.getMiddleName();
-            this.lastName = this.getLastName();
-            this.birth = this.getBirth();
+    public void addSetPassport(Passport passport) {
+//        Как я понял этот метод должен быть в классе работника,
+//        и он уже может его вызывать и производить добавление, я правильно понимаю?
+        if (passports.containsValue(passport)) {
+            passport.name = passport.getName();
+            passport.middleName = passport.getMiddleName();
+            passport.lastName = passport.getLastName();
+            passport.birth = passport.getBirth();
             System.out.println("Дынные обновлены");
         } else {
-            passports.add(this);
+            passports.put(getPassportNumber(), passport);
             System.out.println("Паспорт добавлен в список");
         }
     }
 
     public static void findPassport(String passportNumber) {
-        for (Passport current : passports) {
-            if (current.getPassportNumber().equals(passportNumber)) {
-                System.out.println(current);
-            } else {
-                System.out.println("null");
-            }
-        }
+        System.out.println(passports.get(passportNumber));
     }
 
     public void setName(String name) {
@@ -101,7 +94,7 @@ public class Passport {
         return birth;
     }
 
-    public Set<Passport> getPassport() {
+    public Map<String, Passport> getPassport() {
         return passports;
     }
 

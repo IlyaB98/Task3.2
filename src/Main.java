@@ -1,4 +1,5 @@
 import product.Product;
+import set.Example;
 import set.Passport;
 import transport.*;
 import exception.*;
@@ -100,10 +101,8 @@ public class Main {
 //        example.generateTask();
 
         Passport passport1 = new Passport("245363","Артем", "Громов");
-        passport1.addSetPassport();
-        Passport.findPassport("245363");
-
-
+        passport1.addSetPassport(passport1);
+        Passport.findPassport("24563");
 
     }
 

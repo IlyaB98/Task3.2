@@ -11,8 +11,9 @@ public class Example {
     public void generateTask() {
         for (int first = 1; first <= 9; first++) {
             for (int second = first; second <= 9; second++) {
-                String s = first + " * " + second;
-                tasks.add(s);
+                if (!tasks.contains(first + " * " + second) && !tasks.contains(second + " * " + first)) {
+                    tasks.add(first + " * " + second);
+                }
             }
         }
         Iterator<String> itr = tasks.iterator();
