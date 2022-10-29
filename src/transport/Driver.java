@@ -1,13 +1,19 @@
 package transport;
 
-public class Driver <A extends Transport> {
+import java.util.Objects;
+
+public abstract class Driver<A extends Transport & Competing> {
 
     private String name;
-    private boolean license;
+    private String license;
     private double experience;
+    private A transport;
 
-    public Driver(String name) {
+    public Driver(String name, String license, double experience, A transport) {
         setName(name);
+        setLicense(license);
+        setExperience(experience);
+        this.transport = transport;
     }
 
     public void start() {
@@ -22,6 +28,18 @@ public class Driver <A extends Transport> {
         System.out.println("Заправляюсь!");
     }
 
+    public String getLicense() {
+        return license;
+    }
+
+    public A getTransport() {
+        return transport;
+    }
+
+    public void setTransport(A transport) {
+        this.transport = transport;
+    }
+
     public String getName() {
         return name;
     }
@@ -34,17 +52,21 @@ public class Driver <A extends Transport> {
         }
     }
 
-    public void go(A car) {
+    public void go() {
         System.out.println("Водитель " + getName() + " управляет автомобилем " +
-                car.getBrand() + " " + car.getModel() + ", и будет участвовать в заезде!");
+                transport.getBrand() + " " + transport.getModel() + ", и будет участвовать в заезде!");
     }
 
-    public boolean isLicense() {
+    public String isLicense() {
         return license;
     }
 
-    public void setLicense(boolean license) {
-        this.license = license;
+    public void setLicense(String license) {
+        if (license == null || license.isBlank() || license.isEmpty()) {
+            throw new IllegalArgumentException("Неверно указана категория прав!");
+        } else {
+            this.license = license;
+        }
     }
 
     public double getExperience() {
@@ -57,5 +79,24 @@ public class Driver <A extends Transport> {
         } else {
             this.experience = experience;
         }
+    }
+
+    @Override
+    public String toString() {
+        return  name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return Double.compare(driver.experience, experience) == 0 && name.equals(driver.name) &&
+                Objects.equals(license, driver.license) && Objects.equals(transport, driver.transport);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, license, experience, transport);
     }
 }
