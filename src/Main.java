@@ -85,17 +85,17 @@ public class Main {
 //        productList.removeProduct(mango);
 
 
-        Recipe fruitSalad = new Recipe("Фруктовый с йогуртом", Recipe.addIngredients(banana, 3),
-                Recipe.addIngredients(mango, 2));
-        Recipe fruitSalad2 = new Recipe("Фруктовый", Recipe.addIngredients(banana, 4),
-                Recipe.addIngredients(mango, 2), Recipe.addIngredients(peach, 3));
-        Recipe fruitSalad3 = new Recipe("Фруктовый в сметане", Recipe.addIngredients(banana, 1),
-                Recipe.addIngredients(mango, 1));
+        Recipe fruitSalad = new Recipe("Фруктовый с йогуртом",new Recipe.ProductWithQuantity(banana, 3),
+                new Recipe.ProductWithQuantity(mango, 2));
+        Recipe fruitSalad2 = new Recipe("Фруктовый",new Recipe.ProductWithQuantity(banana, 4),
+                new Recipe.ProductWithQuantity(mango, 2), new Recipe.ProductWithQuantity(peach, 3));
+        Recipe fruitSalad3 = new Recipe("Фруктовый в сметане", new Recipe.ProductWithQuantity(banana, 1),
+                new Recipe.ProductWithQuantity(mango, 1));
 //        System.out.println(fruitSalad);
 
-//        fruitSalad.addRecipe();
-//        fruitSalad2.addRecipe();
-//        Recipe.priceDish(fruitSalad);
+        fruitSalad.addRecipe();
+        fruitSalad2.addRecipe();
+        fruitSalad.priceDish();
 
 //        SetInteger integer = new SetInteger();
 //        integer.randomSetInteger();
@@ -173,11 +173,11 @@ public class Main {
 //        System.out.println(map3.keySet());
 //        System.out.println(map3.values());
 
-        Map<String, Integer> task1_3 = new HashMap<>();
-        task1_3.put("str1", 2);
-        addMapTask1_3(task1_3, "str2", 1);
-//        addMapTask1_3(task1_3, "str1", 2);
-        addMapTask1_3(task1_3, "str1", 5);
+//        Map<String, Integer> task1_3 = new HashMap<>();
+//        task1_3.put("str1", 2);
+//        addMapTask1_3(task1_3, "str2", 1);
+////        addMapTask1_3(task1_3, "str1", 2);
+//        addMapTask1_3(task1_3, "str1", 5);
 
 
     }
